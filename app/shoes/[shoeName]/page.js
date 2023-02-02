@@ -6,7 +6,7 @@ export const dynamic = 'force-dynamic';
 
 export default function ShoePage({ params }) {
   const singleShoe = shoes.find((shoe) => {
-    return shoe.name.toLowerCase() === params.shoeName;
+    return shoe.name.toLowerCase().replace(' ', '-') === params.shoeName;
   });
 
   console.log(singleShoe);

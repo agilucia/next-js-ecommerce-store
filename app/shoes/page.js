@@ -10,10 +10,14 @@ export default function ShoesPage() {
         {shoes.map((shoe) => {
           return (
             <div key={shoe.id}>
-              <Link href={`/shoes/${shoe.name.toLowerCase()}`}>
+              <Link
+                href={`/shoes/${shoe.name.toLowerCase().replace(' ', '-')}`}
+              >
                 <h2>{shoe.name}</h2>
               </Link>
-              <Link href={`/shoes/${shoe.name.toLowerCase()}`}>
+              <Link
+                href={`/shoes/${shoe.name.toLowerCase().replace(' ', '-')}`}
+              >
                 <Image
                   src={`/images/${shoe.name}-${shoe.id}.jpg`}
                   alt={shoe.name}

@@ -5,7 +5,7 @@ export default function HomePage() {
     <>
       <h1>HOME</h1>
       <main>
-        <p>This is my very first project working with next.js.</p>
+        <p>This is my ecommerce store created with next.js.</p>
       </main>
     </>
   );
