@@ -1,5 +1,6 @@
 import './global.scss';
 import Link from 'next/link';
+import CookieBanner from './CookieBanner';
 import styles from './layout.module.scss';
 
 export default function RootLayout({ children }) {
@@ -11,6 +12,7 @@ export default function RootLayout({ children }) {
       */}
       <head />
       <body>
+        <CookieBanner />
         <header className={styles.header}>
           <nav>
             <div>
