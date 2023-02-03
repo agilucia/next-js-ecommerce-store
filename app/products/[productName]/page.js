@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { products } from '../../../database/products';
+import Product from './Product';
 
 export const dynamic = 'force-dynamic';
 
@@ -28,6 +29,7 @@ export default function ProductPage({ params }) {
           width="200"
           height="200"
         />
+        <Product product={singleProduct} />
       </main>
     </>
   );
