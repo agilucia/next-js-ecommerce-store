@@ -41,6 +41,7 @@ export default function ProductsPage() {
                 href={`/products/${product.name
                   .toLowerCase()
                   .replace(' ', '-')}`}
+                data-test-id="product-<product id>"
               >
                 <h2>{product.name}</h2>
               </Link>
@@ -48,6 +49,7 @@ export default function ProductsPage() {
                 href={`/products/${product.name
                   .toLowerCase()
                   .replace(' ', '-')}`}
+                data-test-id="product-<product id>"
               >
                 <Image
                   src={`/images/${product.name}-${product.id}.jpg`}
@@ -55,8 +57,8 @@ export default function ProductsPage() {
                   width="200"
                   height="200"
                 />
-                {/* <p>carts: {product.carts}</p> */}
               </Link>
+              <p>🛒: {product.carts}</p>
             </div>
           );
         })}

@@ -61,7 +61,7 @@ export default function Product(props) {
             // my product is not inside of the cookie
           } else {
             // Add the product to the array of products in cookies
-            productsInCookies.push({ id: props.product.id, carst: 1 });
+            productsInCookies.push({ id: props.product.id, carts: 1 });
           }
 
           // update the cookie after transformation
