@@ -29,7 +29,7 @@ export default function ProductPage({ params }) {
           width="200"
           height="200"
         />
-        {/* <p>🛒: {product.carts}</p> */}
+        <p>🛒: {singleProduct.carts}</p>
         <Product product={singleProduct} />
       </main>
     </>
