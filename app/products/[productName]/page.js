@@ -31,6 +31,7 @@ export default function ProductPage({ params }) {
         />
         <p>🛒: {singleProduct.carts}</p>
         <Product product={singleProduct} />
+        <button data-test-id="product-add-to-cart">Add to cart</button>
       </main>
     </>
   );
