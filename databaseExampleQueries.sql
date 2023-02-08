@@ -1,10 +1,11 @@
 -- Creating a table
 
-CREATE TABLE animals (
+CREATE TABLE products (
   id integer PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-  first_name varchar(30) NOT NULL,
+  name varchar(30) NOT NULL,
   type varcher(30) NOT NULL,
-  accessory varchar(40)
+  price varchar(30) NOT NULL,
+  description varchar(300)
 );
 
 -- Insterting product
