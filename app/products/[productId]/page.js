@@ -5,6 +5,15 @@ import Product from './Product';
 
 export const dynamic = 'force-dynamic';
 
+export async function generateMetadata(props) {
+  const singleProduct = await getProduct(props.params.productId);
+
+  return {
+    title: `Single product page for ${singleProduct.name}`,
+    description: '',
+  };
+}
+
 export default async function ProductPage({ params }) {
   // const singleProduct = products.find((product) => {
   //   return product.id === params.productId;

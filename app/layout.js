@@ -3,6 +3,13 @@ import Link from 'next/link';
 import CookieBanner from './CookieBanner';
 import styles from './layout.module.scss';
 
+export const metadata = {
+  title: {
+    default: 'bouldergear',
+    template: '%s | bouldergear',
+  },
+};
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en">

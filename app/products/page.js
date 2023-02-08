@@ -3,6 +3,11 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { getProducts } from '../../database/products';
 
+export const metadata = {
+  title: 'Products',
+  description: 'This is my Products Page',
+};
+
 export default async function ProductsPage() {
   const products = await getProducts();
 

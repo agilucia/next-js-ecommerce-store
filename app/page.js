@@ -1,5 +1,9 @@
 // import Image from 'next/image';
 
+export const metadata = {
+  description: 'This is my Home Page',
+};
+
 export default function HomePage() {
   return (
     <>
