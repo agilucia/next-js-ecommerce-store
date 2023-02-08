@@ -40,21 +40,17 @@ export default async function ProductsPage() {
           return (
             <div key={product.id}>
               <Link
-                href={`/products/${product.name
-                  .toLowerCase()
-                  .replace(' ', '-')}`}
+                href={`/products/${product.id}`}
                 data-test-id="product-<product id>"
               >
                 <h2>{product.name}</h2>
               </Link>
               <Link
-                href={`/products/${product.name
-                  .toLowerCase()
-                  .replace(' ', '-')}`}
+                href={`/products/${product.id}`}
                 data-test-id="product-<product id>"
               >
                 <Image
-                  src={`/images/${product.name}-${product.id}.jpg`}
+                  src={`/images/${product.id}.jpg`}
                   alt={product.name}
                   width="200"
                   height="200"

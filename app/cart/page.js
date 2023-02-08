@@ -2,28 +2,33 @@
 // import { cookies } from 'next/headers';
 //  import Image from 'next/image';
 //  import Link from 'next/link';
-import { products } from '../../database/products';
-import Product from '../products/[productName]/Product';
 
-export const dynamic = 'force-dynamic';
+// LINE BREAK HERE!!!
 
-export default function CartPage({ params }) {
-  const singleProduct = products.find((product) => {
-    return product.name.toLowerCase() === params.productName;
-  });
+// import { products } from '../../database/products';
+// import Product from '../products/[productName]/Product';
 
-  return (
-    <>
-      <h1>CART</h1>
-      <main>
-        <p>This is the cart.</p>
-        <Product product={singleProduct} />
-        {/* <p>🛒: {product.carts}</p> */}
-        {/* <ProductsPage /> */}
-      </main>
-    </>
-  );
-}
+// export const dynamic = 'force-dynamic';
+
+// export default function CartPage({ params }) {
+//   const singleProduct = products.find((product) => {
+//     return product.name.toLowerCase() === params.productName;
+//   });
+
+//   return (
+//     <>
+//       <h1>CART</h1>
+//       <main>
+//         <p>This is the cart.</p>
+//         <Product product={singleProduct} />
+//         {/* <p>🛒: {product.carts}</p> */}
+//         {/* <ProductsPage /> */}
+//       </main>
+//     </>
+//   );
+// }
+
+// LINE BREAK HERE!!!
 
 // import { cookies } from 'next/headers';
 // // import Image from 'next/image';
