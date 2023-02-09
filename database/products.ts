@@ -1,6 +1,8 @@
 // import fs from 'node:fs';
 
 import { cache } from 'react';
+import ProductsPage from '../app/products/page';
+import { productionBrowserSourceMaps } from '../next.config';
 import { sql } from './connect';
 
 // export const products1 = [
@@ -120,5 +122,56 @@ export const getProducts = cache(async () => {
 export const getProduct = cache(async (id: number) => {
   const [product] = await sql<Product[]>`
   SELECT * FROM products WHERE id = ${id}`;
+  return product;
+});
+
+// creating a new product
+export const createProduct = cache(
+  async (name: string, type: string, price: string, description: string) => {
+    const [product] = await sql<Product[]>`
+    INSERT INTO products
+      (name, type, price, description)
+    VALUES
+      (${name}, ${type}, ${price}, ${description})
+    RETURNING *
+    `;
+    return product;
+  },
+);
+
+// updating a product
+export const updateProductById = cache(
+  async (
+    id: number,
+    name: string,
+    type: string,
+    price: string,
+    description: string,
+  ) => {
+    const [product] = await sql<Product[]>`
+    UPDATE
+      products
+    SELECT
+      name = ${name},
+      type = ${type},
+      price = ${price},
+      description = ${description}
+    WHERE
+      id = ${id}
+    RETURNING *
+    `;
+    return product;
+  },
+);
+
+// deleting a product
+export const deleteProductById = cache(async (id: number) => {
+  const [product] = await sql<Product[]>`
+  DELETE FROM
+    products
+  WHERE
+    id = ${id}
+  RETURNING *
+  `;
   return product;
 });

@@ -10,9 +10,13 @@ body {
   font-family: 'Dank Mono', SFMono-Regular, Consolas, 'Liberation Mono', Menlo,
     Courier, monospace;
   font-size: 21px;
-  background-color: var(--main-bg-color);
   color: var(--main-text-color);
   line-height: 1.5;
   margin: 0;
-  /* background-color: rgb(203, 242, 251); */
+  min-height: 100vh;
+  height: 100%;
+}
+
+html {
+  height: 100%;
 }

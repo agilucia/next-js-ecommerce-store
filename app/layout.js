@@ -18,15 +18,18 @@ export default function RootLayout({ children }) {
         head.js. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
       */}
       <head />
-      <body>
+      <body className={styles.body}>
         <CookieBanner />
         <header className={styles.header}>
           <nav>
             <div>
-              <Link href="/">Home</Link>
-              <Link href="/products">Products</Link>
-              <Link href="/cart">Cart</Link>
-              <Link href="/checkout">Checkout</Link>
+              {/* <div className={styles.div_bouldergear}>bouldergear</div> */}
+              <div className={styles.div_links}>
+                <Link href="/">Home</Link>
+                <Link href="/products">Products</Link>
+                <Link href="/cart">Cart</Link>
+                <Link href="/checkout">Checkout</Link>
+              </div>
             </div>
           </nav>
         </header>

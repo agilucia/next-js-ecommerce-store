@@ -1,4 +1,8 @@
-// import Image from 'next/image';
+import './global.scss';
+import Image from 'next/image';
+import Link from 'next/link';
+import climber from '../public/images/climber.png';
+import styles from './page.module.scss';
 
 export const metadata = {
   description: 'This is my Home Page',
@@ -6,11 +10,16 @@ export const metadata = {
 
 export default function HomePage() {
   return (
-    <>
-      <h1>HOME</h1>
-      <main>
-        <p>This is my ecommerce store created with next.js.</p>
-      </main>
-    </>
+    <div className={styles.home_body}>
+      <div className={styles.h1_div}>
+        <h1 className={styles.h1}>BOULDERGEAR FOR EVERYONE</h1>
+      </div>
+      <div className={styles.climber_image}>
+        <Link href="/products">
+          <div className={styles.products_div}>Products</div>
+          <Image src={climber} alt="climber" />
+        </Link>
+      </div>
+    </div>
   );
 }
