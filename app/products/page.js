@@ -1,7 +1,9 @@
+import '../global.scss';
 import { cookies } from 'next/headers';
 import Image from 'next/image';
 import Link from 'next/link';
 import { getProducts } from '../../database/products';
+import styles from './page.modules.scss';
 
 export const metadata = {
   title: 'Products',
@@ -39,6 +41,7 @@ export default async function ProductsPage() {
 
   return (
     <>
+    <main className={styles.products_overview}>
       <h1>PRODUCTS</h1>
       <div>
         {productsWithCarts.map((product) => {
@@ -66,6 +69,7 @@ export default async function ProductsPage() {
           );
         })}
       </div>
+      </main>
       {/* <h1>Products</h1>
       <main>
         {products.map((product) => {
