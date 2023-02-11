@@ -14,10 +14,12 @@ export default function HomePage() {
       <div className={styles.h1_div}>
         <h1 className={styles.h1}>BOULDERGEAR FOR EVERYONE</h1>
       </div>
-      <div>
+      <div className={styles.container}>
         <Link href="/products">
           <div className={styles.products_div}>Products</div>
-          <Image src={climber} alt="climber" className={styles.climber_image} />
+          <div className={styles.climber_image}>
+            <Image src={climber} alt="climber" />
+          </div>
         </Link>
       </div>
     </div>

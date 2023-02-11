@@ -42,6 +42,7 @@ export default async function ProductPage({ params }) {
           width="200"
           height="200"
         />
+        <p>{singleProduct.price}€</p>
         <p>🛒: {singleProduct.carts}</p>
         <Product product={singleProduct} />
         <button data-test-id="product-add-to-cart">Add to cart</button>

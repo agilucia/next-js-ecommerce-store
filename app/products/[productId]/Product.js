@@ -1,74 +1,63 @@
 'use client';
-
+import { useState } from 'react';
 import { getParsedCookie, setStringifiedCookie } from '../../../utils/cookies';
 
 export default function Product(props) {
+  const [count, setCount] = useState(1);
   return (
     <div>
+      <input readOnly value={count} />
       <button
         onClick={() => {
-          // get the cookie
-          const productsInCookies = getParsedCookie('productsCookie');
-
-          if (!productsInCookies) {
-            // if there is no cookie function stop here
-            return;
-          }
-
-          // try to find the fruit inside of the cookies
-          const foundProduct = productsInCookies.find((productInCookie) => {
-            return productInCookie.id === props.product.id;
-          });
-
-          // my product is not inside of the cookie
-          if (foundProduct) {
-            // update the cookie with the new values
-            foundProduct.carts--;
-            // if there is a negative value set number to 0
-            if (foundProduct.carts < 0) {
-              foundProduct.carts = 0;
-            }
-            // update the cookie after transformation
-            setStringifiedCookie('productsCookie', productsInCookies);
+          if (count <= 1) {
+            setCount(1);
+          } else {
+            setCount(count - 1);
           }
         }}
       >
-        -🛒
+        -
       </button>
       <button
         onClick={() => {
-          // get the cookie
+          setCount(count + 1);
+        }}
+      >
+        +
+      </button>
+      <button
+        data-test-id="product-add-to-cart"
+        onClick={() => {
+          // get cookie
           const productsInCookies = getParsedCookie('productsCookie');
-
-          // if there is no cookie we initialize the value with a 1
+          // cookie doesn't exist, we initialize it with our useState-value
           if (!productsInCookies) {
-            // create the cookie with a new object for the fruit
             setStringifiedCookie('productsCookie', [
-              { id: props.product.id, carts: 1 },
+              { id: props.product.id, carts: count },
             ]);
-            // if there is no cookie function stop here
+
             return;
           }
 
-          const foundProduct = productsInCookies.find((productInCookie) => {
-            return productInCookie.id === props.product.id;
+          const foundProduct = productsInCookies.find((productInCookies) => {
+            return productInCookies.id === props.product.id;
           });
-
-          // my product is inside of the cookie
+          // product is inside the cookies
           if (foundProduct) {
-            // Add a start to the foundProduct
-            foundProduct.carts++;
-            // my product is not inside of the cookie
+            foundProduct.carts += count;
+            // if it's not inside the cookie, we push it to the cookies
           } else {
-            // Add the product to the array of products in cookies
-            productsInCookies.push({ id: props.product.id, carts: 1 });
+            productsInCookies.push({
+              id: props.product.id,
+              carts: count,
+            });
           }
-
-          // update the cookie after transformation
+          // update the cookies with the new values
           setStringifiedCookie('productsCookie', productsInCookies);
+          setCount(1);
         }}
       >
-        +🛒
+        Add to cart
       </button>
     </div>
   );

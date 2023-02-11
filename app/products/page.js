@@ -41,34 +41,33 @@ export default async function ProductsPage() {
 
   return (
     <>
-    <main className={styles.products_overview}>
-      <h1>PRODUCTS</h1>
-      <div>
-        {productsWithCarts.map((product) => {
-          return (
-            <div key={product.id}>
-              <Link
-                href={`/products/${product.id}`}
-                data-test-id="product-<product id>"
-              >
-                <h2>{product.name}</h2>
-              </Link>
-              <Link
-                href={`/products/${product.id}`}
-                data-test-id="product-<product id>"
-              >
-                <Image
-                  src={`/images/${product.id}.jpg`}
-                  alt={product.name}
-                  width="200"
-                  height="200"
-                />
-              </Link>
-              <p>🛒: {product.carts}</p>
-            </div>
-          );
-        })}
-      </div>
+      <main className={styles.products_overview}>
+        <div className={styles.h1_div}>
+          <h1>PRODUCTS</h1>
+        </div>
+        <span>
+          {productsWithCarts.map((product) => {
+            return (
+              <div className={styles.products_div} key={product.id}>
+                <Link
+                  href={`/products/${product.id}`}
+                  data-test-id="product-<product id>"
+                >
+                  <Image
+                    src={`/images/${product.id}.jpg`}
+                    alt={product.name}
+                    width="200"
+                    height="200"
+                  />
+
+                  <h3>{product.name}</h3>
+                  <p>{product.price}€</p>
+                  {/* <p>🛒: {product.carts}</p> */}
+                </Link>
+              </div>
+            );
+          })}
+        </span>
       </main>
       {/* <h1>Products</h1>
       <main>
