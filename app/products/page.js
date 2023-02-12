@@ -14,7 +14,7 @@ export default async function ProductsPage() {
   const products = await getProducts();
 
   // get the cookie from the server
-  const productsCookie = cookies().get('productsCookie');
+  const productsCookie = cookies().get('cart');
 
   // create a default value if cookie doesn't exist
   let productsCookieParsed = [];
@@ -24,7 +24,7 @@ export default async function ProductsPage() {
   }
 
   const productsWithCarts = products.map((product) => {
-    const productWithCarts = { ...product, carts: 0 };
+    const productWithCarts = { ...product, amount: 0 };
 
     // I read the cookie and find the product
     const productInCookie = productsCookieParsed.find(
@@ -33,7 +33,7 @@ export default async function ProductsPage() {
 
     // if find the product I update the amount of stars
     if (productInCookie) {
-      productWithCarts.carts = productInCookie.carts;
+      productWithCarts.amount = productInCookie.amount;
     }
 
     return productWithCarts;
@@ -42,13 +42,13 @@ export default async function ProductsPage() {
   return (
     <>
       <main className={styles.products_overview}>
-        <div className={styles.h1_div}>
-          <h1>PRODUCTS</h1>
+        <div>
+          <h1 className={styles.h1}>PRODUCTS</h1>
         </div>
-        <span>
+        <span className={styles.span}>
           {productsWithCarts.map((product) => {
             return (
-              <div className={styles.products_div} key={product.id}>
+              <div className={styles.div} key={product.id}>
                 <Link
                   href={`/products/${product.id}`}
                   data-test-id="product-<product id>"
@@ -60,9 +60,9 @@ export default async function ProductsPage() {
                     height="200"
                   />
 
-                  <h3>{product.name}</h3>
-                  <p>{product.price}€</p>
-                  {/* <p>🛒: {product.carts}</p> */}
+                  <h3 className={styles.h3}>{product.name}</h3>
+                  <p className={styles.p}>{product.price}€</p>
+                  {/* <p>🛒: {product.amount}</p> */}
                 </Link>
               </div>
             );

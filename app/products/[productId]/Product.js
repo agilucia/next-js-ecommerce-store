@@ -1,12 +1,13 @@
 'use client';
 import { useState } from 'react';
 import { getParsedCookie, setStringifiedCookie } from '../../../utils/cookies';
+import styles from './page.modules.scss';
 
 export default function Product(props) {
   const [count, setCount] = useState(1);
   return (
     <div>
-      <input readOnly value={count} />
+      <input data-test-id="product-quantity" readOnly value={count} />
       <button
         onClick={() => {
           if (count <= 1) {
@@ -29,11 +30,11 @@ export default function Product(props) {
         data-test-id="product-add-to-cart"
         onClick={() => {
           // get cookie
-          const productsInCookies = getParsedCookie('productsCookie');
+          const productsInCookies = getParsedCookie('cart');
           // cookie doesn't exist, we initialize it with our useState-value
           if (!productsInCookies) {
-            setStringifiedCookie('productsCookie', [
-              { id: props.product.id, carts: count },
+            setStringifiedCookie('cart', [
+              { id: props.product.id, amount: count },
             ]);
 
             return;
@@ -44,16 +45,16 @@ export default function Product(props) {
           });
           // product is inside the cookies
           if (foundProduct) {
-            foundProduct.carts += count;
+            foundProduct.amount += count;
             // if it's not inside the cookie, we push it to the cookies
           } else {
             productsInCookies.push({
               id: props.product.id,
-              carts: count,
+              amount: count,
             });
           }
           // update the cookies with the new values
-          setStringifiedCookie('productsCookie', productsInCookies);
+          setStringifiedCookie('cart', productsInCookies);
           setCount(1);
         }}
       >

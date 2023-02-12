@@ -1,6 +1,8 @@
+import '../../global.scss';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { getProduct, products } from '../../../database/products';
+import styles from './page.modules.scss';
 import Product from './Product';
 
 export const dynamic = 'force-dynamic';
@@ -30,23 +32,27 @@ export default async function ProductPage({ params }) {
   }
 
   return (
-    <>
-      <h1>{singleProduct.name}</h1>
-      <main>
-        {/* This shoe is from the brand {singleProduct.name} and is great for indoor
-        climbing */}
-        <br />
+    <main>
+      <span>
         <Image
+          data-test-id="product-image"
           src={`/images/${singleProduct.id}.jpg`}
           alt={singleProduct.id}
           width="200"
           height="200"
         />
-        <p>{singleProduct.price}€</p>
-        <p>🛒: {singleProduct.carts}</p>
-        <Product product={singleProduct} />
-        <button data-test-id="product-add-to-cart">Add to cart</button>
-      </main>
-    </>
+        <div className={styles.product_info}>
+          <h1>{singleProduct.name}</h1>
+          <br />
+          <p>{singleProduct.description}</p>
+          <div>
+            <div data-test-id="product-price">
+              Price: {singleProduct.price} €
+            </div>
+            <Product product={singleProduct} />
+          </div>
+        </div>
+      </span>
+    </main>
   );
 }

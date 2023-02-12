@@ -1,7 +1,12 @@
 // import { cookies } from 'next/headers';
 // import { Cart } from '../cart/page';
 
-export default function Checkout() {
+export const metadata = {
+  title: 'Checkout',
+  description: 'This is my Checkout Page',
+};
+
+export default function CheckoutPage() {
   return (
     <>
       <h1>CHECKOUT</h1>

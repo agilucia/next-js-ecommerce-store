@@ -17,21 +17,6 @@ h1 {
   border-radius: 4px;
 }
 
-// .h1_div {
-//   display: flex;
-//   // align-items: center;
-//   // justify-content: center;
-// }
-
-// .h1 {
-//   font-style: normal;
-//   font-weight: 700;
-//   font-size: 28px;
-//   line-height: 48px;
-//   color: #000000;
-//   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-// }
-
 span {
   display: flex;
   flex-direction: row;
@@ -40,11 +25,19 @@ span {
   flex-wrap: wrap;
   margin-left: 60px;
   margin-right: 60px;
-  margin-bottom: 200px;
+  padding-bottom: 60px;
+
+  & div {
+    background-color: white;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 4px;
+  }
 }
 
 h3,
 p {
-  color: white;
+  color: black;
   text-align: center;
 }

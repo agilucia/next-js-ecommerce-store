@@ -1,18 +1,20 @@
 import '../global.scss';
 import { cookies } from 'next/headers';
 import Image from 'next/image';
+import Link from 'next/link';
 import { getProducts } from '../../database/products';
+import styles from './page.modules.scss';
 
 export const metadata = {
   title: 'Cart',
   description: 'This is my Cart Page',
 };
 
-export default async function cartPage() {
+export default async function CartPage() {
   const products = await getProducts();
 
   // get the cookie from the server
-  const productsCookie = cookies().get('productsCookie');
+  const productsCookie = cookies().get('cart');
 
   // create a default value if cookie doesn't exist
   let productsCookieParsed = [];
@@ -22,7 +24,7 @@ export default async function cartPage() {
   }
 
   const productsWithCarts = products.map((product) => {
-    const productWithCarts = { ...product, carts: 0 };
+    const productWithCarts = { ...product, amount: 0 };
 
     // I read the cookie and find the product
     const productInCookie = productsCookieParsed.find(
@@ -31,7 +33,7 @@ export default async function cartPage() {
 
     // if find the product I update the amount of stars
     if (productInCookie) {
-      productWithCarts.carts = productInCookie.carts;
+      productWithCarts.amount = productInCookie.amount;
     }
 
     return productWithCarts;
@@ -39,10 +41,10 @@ export default async function cartPage() {
 
   let total = 0;
   productsWithCarts.forEach((product) => {
-    total += product.price * product.carts;
+    total += product.price * product.amount;
   });
 
-  const cartItems = productsWithCarts.filter((product) => product.carts > 0);
+  const cartItems = productsWithCarts.filter((product) => product.amount > 0);
 
   return (
     <main>
@@ -58,14 +60,32 @@ export default async function cartPage() {
               width="200"
               height="200"
             />
-            <b>{product.name}</b> {product.price} €
-            <div data-test-id={`cart-product-quantity-${product.id}`}>
-              {product.carts}x {product.name}
+            <div>
+              <b>{product.name}</b> {product.price} €
+              <br />
+              <div data-test-id={`cart-product-quantity-${product.id}`}>
+                <b>Amount:</b> {product.amount}
+              </div>
+            </div>
+            <div>
+              <button data-test-id={`cart-product-remove-${product.id}`}>
+                Remove
+              </button>
             </div>
           </li>
         ))}
       </ul>
-      <p>Total: {total} €</p>
+      <p>
+        <span>
+          <div data-test-id="cart-total">
+            <b>Total:</b> {total} €
+          </div>
+          <br />
+          <Link href="/checkout">
+            <button data-test-id="cart-checkout">Checkout</button>
+          </Link>
+        </span>
+      </p>
     </main>
   );
 }

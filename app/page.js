@@ -11,9 +11,9 @@ export const metadata = {
 export default function HomePage() {
   return (
     <div className={styles.home_body}>
-      <div className={styles.h1_div}>
-        <h1 className={styles.h1}>BOULDERGEAR FOR EVERYONE</h1>
-      </div>
+      {/* <div className={styles.h1_div}> */}
+      <h1 className={styles.h1}>BOULDERGEAR FOR EVERYONE</h1>
+      {/* </div> */}
       <div className={styles.container}>
         <Link href="/products">
           <div className={styles.products_div}>Products</div>

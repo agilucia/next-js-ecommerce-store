@@ -26,7 +26,9 @@ export default function RootLayout({ children }) {
               {/* <div className={styles.div_bouldergear}>bouldergear</div> */}
               <div className={styles.div_links}>
                 <Link href="/">Home</Link>
-                <Link href="/products">Products</Link>
+                <Link href="/products" data-test-id="products-links">
+                  Products
+                </Link>
                 <Link href="/cart">Cart</Link>
                 <Link href="/checkout">Checkout</Link>
               </div>
