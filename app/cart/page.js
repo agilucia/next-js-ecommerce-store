@@ -3,7 +3,7 @@ import { cookies } from 'next/headers';
 import Image from 'next/image';
 import Link from 'next/link';
 import { getProducts } from '../../database/products';
-// import Cart from './Cart';
+import DeleteProductButton from './DeleteProductButton';
 import styles from './page.modules.scss';
 
 export const metadata = {
@@ -55,22 +55,22 @@ export default async function CartPage() {
       <ul>
         {cartItems.map((product) => (
           <li key={product.id} data-test-id={`cart-product-${product.id}`}>
-            <Image
-              src={`/images/${product.id}.jpg`}
-              alt={product.name}
-              width="200"
-              height="200"
-            />
-            <div>
-              <b>{product.name}</b> {product.price} €
-              <br />
-              <div data-test-id={`cart-product-quantity-${product.id}`}>
-                <b>Amount:</b> {product.amount}
+            <Link href={`/products/${product.id}`}>
+              <Image
+                src={`/images/${product.id}.jpg`}
+                alt={product.name}
+                width="200"
+                height="200"
+              />
+              <div>
+                <b>{product.name}</b> {product.price} €
+                <br />
+                <div data-test-id={`cart-product-quantity-${product.id}`}>
+                  <b>Amount:</b> {product.amount}
+                </div>
               </div>
-            </div>
-            <div>
-              {/* <Cart data-test-id={`cart-product-remove-${product.id}`} /> */}
-            </div>
+            </Link>
+            <DeleteProductButton product={product} />
           </li>
         ))}
       </ul>
