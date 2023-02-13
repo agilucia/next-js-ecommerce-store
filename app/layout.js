@@ -1,5 +1,7 @@
 import './global.scss';
+import { cookies } from 'next/headers';
 import Link from 'next/link';
+import { getProducts } from '../database/products';
 import CookieBanner from './CookieBanner';
 import styles from './layout.module.scss';
 
@@ -10,7 +12,40 @@ export const metadata = {
   },
 };
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children }) {
+  const products = await getProducts();
+
+  // get the cookie from the server
+  const productsCookie = cookies().get('cart');
+
+  // create a default value if cookie doesn't exist
+  let productsCookieParsed = [];
+
+  if (productsCookie) {
+    productsCookieParsed = JSON.parse(productsCookie.value);
+  }
+
+  const productsWithCarts = products.map((product) => {
+    const productWithCarts = { ...product, amount: 0 };
+
+    // I read the cookie and find the product
+    const productInCookie = productsCookieParsed.find(
+      (productObject) => product.id === productObject.id,
+    );
+
+    // if find the product I update the amount of stars
+    if (productInCookie) {
+      productWithCarts.amount = productInCookie.amount;
+    }
+
+    return productWithCarts;
+  });
+
+  let totalQuantity = 0;
+  productsWithCarts.forEach((product) => {
+    totalQuantity += product.amount;
+  });
+
   return (
     <html lang="en">
       {/*
@@ -29,7 +64,7 @@ export default function RootLayout({ children }) {
                 <Link href="/products" data-test-id="products-links">
                   Products
                 </Link>
-                <Link href="/cart">Cart</Link>
+                <Link href="/cart">Cart: {totalQuantity}</Link>
                 <Link href="/checkout">Checkout</Link>
               </div>
             </div>

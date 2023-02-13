@@ -1,10 +1,12 @@
 'use client';
+import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { getParsedCookie, setStringifiedCookie } from '../../../utils/cookies';
 import styles from './page.modules.scss';
 
 export default function Product(props) {
   const [count, setCount] = useState(1);
+  const router = useRouter();
   return (
     <div>
       <input data-test-id="product-quantity" readOnly value={count} />
@@ -56,6 +58,7 @@ export default function Product(props) {
           // update the cookies with the new values
           setStringifiedCookie('cart', productsInCookies);
           setCount(1);
+          router.refresh();
         }}
       >
         Add to cart

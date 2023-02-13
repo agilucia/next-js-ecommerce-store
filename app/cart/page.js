@@ -3,6 +3,7 @@ import { cookies } from 'next/headers';
 import Image from 'next/image';
 import Link from 'next/link';
 import { getProducts } from '../../database/products';
+// import Cart from './Cart';
 import styles from './page.modules.scss';
 
 export const metadata = {
@@ -68,9 +69,7 @@ export default async function CartPage() {
               </div>
             </div>
             <div>
-              <button data-test-id={`cart-product-remove-${product.id}`}>
-                Remove
-              </button>
+              {/* <Cart data-test-id={`cart-product-remove-${product.id}`} /> */}
             </div>
           </li>
         ))}
