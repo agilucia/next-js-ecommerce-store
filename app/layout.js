@@ -64,8 +64,9 @@ export default async function RootLayout({ children }) {
                 <Link href="/products" data-test-id="products-links">
                   Products
                 </Link>
-                <Link href="/cart">Cart: {totalQuantity}</Link>
-                <Link href="/checkout">Checkout</Link>
+                <Link href="/cart" data-test-id="cart-link">
+                  Cart: <div data-test-id="cart-count">{totalQuantity}</div>
+                </Link>
               </div>
             </div>
           </nav>

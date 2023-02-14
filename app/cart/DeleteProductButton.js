@@ -8,6 +8,7 @@ export default function deleteProduct(props) {
   return (
     <div>
       <button
+        data-test-id="cart-product-remove-<product id>"
         onClick={() => {
           // get the cookie
           const productsInCookies = getParsedCookie('cart');
