@@ -13,7 +13,11 @@ export default function CheckoutForm(props) {
   };
   return (
     <main>
-      <form className={styles.checkoutform} onSubmit={handleSubmit}>
+      <form
+        className={styles.checkoutform}
+        onSubmit={handleSubmit}
+        autoComplete="off"
+      >
         <label>
           First name:
           <input
