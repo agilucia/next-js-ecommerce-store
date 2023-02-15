@@ -4,11 +4,12 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { getProducts } from '../../database/products';
 import DeleteProductButton from './DeleteProductButton';
-import styles from './page.modules.scss';
+import styles from './page.module.scss';
 
 export const metadata = {
   title: 'Cart',
-  description: 'This is my Cart Page',
+  description:
+    'Review your chosen items and get excited about stronger bouldering sessions to come',
 };
 
 export default async function CartPage() {
@@ -48,13 +49,17 @@ export default async function CartPage() {
   const cartItems = productsWithCarts.filter((product) => product.amount > 0);
 
   return (
-    <main>
+    <main className={styles.main}>
       <div>
-        <h1>CART</h1>
+        <h1 className={styles.h1}>CART</h1>
       </div>
-      <ul>
+      <ul className={styles.ul}>
         {cartItems.map((product) => (
-          <li key={product.id} data-test-id={`cart-product-${product.id}`}>
+          <li
+            className={styles.li}
+            key={product.id}
+            data-test-id={`cart-product-${product.id}`}
+          >
             <Link href={`/products/${product.id}`}>
               <Image
                 src={`/images/${product.id}.jpg`}
@@ -74,17 +79,21 @@ export default async function CartPage() {
           </li>
         ))}
       </ul>
-      <p>
-        <span>
+      {/* <p className={styles.p}> */}
+      <div className={styles.span_div}>
+        <span className={styles.span}>
           <div data-test-id="cart-total">
             <b>Total:</b> {total} €
           </div>
           <br />
           <Link href="/checkout">
-            <button data-test-id="cart-checkout">Checkout</button>
+            <button className={styles.button} data-test-id="cart-checkout">
+              Checkout
+            </button>
           </Link>
         </span>
-      </p>
+      </div>
+      {/* </p> */}
     </main>
   );
 }

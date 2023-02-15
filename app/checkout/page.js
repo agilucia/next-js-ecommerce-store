@@ -1,14 +1,14 @@
-// import { cookies } from 'next/headers';
-// import { Cart } from '../cart/page';
+import '../global.scss';
 import { cookies } from 'next/headers';
-// import Link from 'next/link';
 import React from 'react';
 import { getProducts } from '../../database/products';
 import CheckoutForm from './CheckoutForm';
+import styles from './page.module.scss';
 
 export const metadata = {
   title: 'Checkout',
-  description: 'This is my Checkout Page',
+  description:
+    'Complete your purchase in just a few steps on our Checkout Page',
 };
 
 export default async function CheckoutPage() {
@@ -46,12 +46,17 @@ export default async function CheckoutPage() {
   });
 
   return (
-    <main>
-      <h1>CHECKOUT</h1>
-      <div>Total: {total}</div>
-      <div>Please fill in personal information!</div>
+    <main className={styles.main}>
+      <h1 className={styles.h1}>CHECKOUT</h1>
+      <span className={styles.span}>
+        <div>
+          <b>Total:</b> {total} €
+          <br />
+          <b>Please fill in personal information!</b>
+        </div>
 
-      <CheckoutForm />
+        <CheckoutForm className={styles.checkoutform} />
+      </span>
     </main>
   );
 }

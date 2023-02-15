@@ -2,17 +2,22 @@ import '../../global.scss';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { getProduct } from '../../../database/products';
+import { ProductNotFoundMetadata } from './not-found';
 import styles from './page.module.scss';
 import Product from './Product';
 
 export const dynamic = 'force-dynamic';
 
 export async function generateMetadata(props) {
-  const singleProduct = await getProduct(props.params.productId);
+  const singleProduct = await getProduct(parseInt(props.params.productId));
+
+  if (!singleProduct) {
+    return ProductNotFoundMetadata;
+  }
 
   return {
     title: singleProduct.name,
-    description: `Single product page for ${singleProduct.name}`,
+    description: `Add ${singleProduct.name} to your inventory to step up your bouldering game`,
   };
 }
 
@@ -23,7 +28,7 @@ export default async function ProductPage({ params }) {
 
   const singleProduct = await getProduct(params.productId);
 
-  console.log(params);
+  // console.log(params);
 
   console.log(singleProduct);
   if (!singleProduct) {

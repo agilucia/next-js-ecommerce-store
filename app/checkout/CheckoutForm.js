@@ -2,6 +2,7 @@
 
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
+import styles from './page.module.scss';
 
 export default function CheckoutForm(props) {
   const router = useRouter();
@@ -12,7 +13,7 @@ export default function CheckoutForm(props) {
   };
   return (
     <main>
-      <form onSubmit={handleSubmit}>
+      <form className={styles.checkoutform} onSubmit={handleSubmit}>
         <label>
           First name:
           <input
