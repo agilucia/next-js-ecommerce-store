@@ -1,8 +1,8 @@
 import '../../global.scss';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
-import { getProduct, products } from '../../../database/products';
-import styles from './page.modules.scss';
+import { getProduct } from '../../../database/products';
+import styles from './page.module.scss';
 import Product from './Product';
 
 export const dynamic = 'force-dynamic';
@@ -33,7 +33,7 @@ export default async function ProductPage({ params }) {
 
   return (
     <main>
-      <span>
+      <span className={styles.span}>
         <Image
           data-test-id="product-image"
           src={`/images/${singleProduct.id}.jpg`}
