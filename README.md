@@ -49,13 +49,13 @@ yarn
 psql -U postgres
 ```
 
--On macOS
+- On macOS
 
 ```bash
 psql postgres
 ```
 
--On Linux
+- On Linux
 
 ```bash
 sudo -u postgres psql
@@ -108,4 +108,4 @@ yarn dev
 
 Open [http://localhost:3000](http://localhost:3000) in your browser to see the result.
 
-# Deployment instructions
+## Deployment instructions
