@@ -65,7 +65,13 @@ export default async function RootLayout({ children }) {
                   Products
                 </Link>
                 <Link href="/cart" data-test-id="cart-link">
-                  Cart: <div className={styles.div_quantity} data-test-id="cart-count">{totalQuantity}</div>
+                  Cart:{' '}
+                  <div
+                    className={styles.div_quantity}
+                    data-test-id="cart-count"
+                  >
+                    {totalQuantity}
+                  </div>
                 </Link>
               </div>
             </div>
@@ -73,7 +79,7 @@ export default async function RootLayout({ children }) {
         </header>
         {children}
         <footer className={styles.footer}>
-          copyright climbinggear4everyone 2023
+          copyright boulderinggear4everyone 2023
         </footer>
       </body>
     </html>

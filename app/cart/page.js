@@ -42,9 +42,12 @@ export default async function CartPage() {
   });
 
   let total = 0;
+
   productsWithCarts.forEach((product) => {
     total += product.price * product.amount;
   });
+
+  const totalprice = total.toFixed(2);
 
   const cartItems = productsWithCarts.filter((product) => product.amount > 0);
 
@@ -83,7 +86,7 @@ export default async function CartPage() {
       <div className={styles.span_div}>
         <span className={styles.span}>
           <div data-test-id="cart-total">
-            <b>Total:</b> {total} €
+            <b>Total:</b> {totalprice} €
           </div>
           <br />
           <Link href="/checkout">

@@ -45,12 +45,14 @@ export default async function CheckoutPage() {
     total += product.price * product.amount;
   });
 
+  const totalprice = total.toFixed(2);
+
   return (
     <main className={styles.main}>
       <h1 className={styles.h1}>CHECKOUT</h1>
       <span className={styles.span}>
         <div>
-          <b>Total:</b> {total} €
+          <b>Total:</b> {totalprice} €
           <br />
           <b>Please fill in personal information!</b>
         </div>

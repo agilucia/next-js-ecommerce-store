@@ -7,7 +7,8 @@ import styles from './page.module.scss';
 
 export const metadata = {
   title: 'Products',
-  description: 'This is my Products Page',
+  description:
+    'Browse through the Products Page and choose what your heart desires',
 };
 
 export default async function ProductsPage() {

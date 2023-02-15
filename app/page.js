@@ -5,7 +5,8 @@ import climber from '../public/images/climber.png';
 import styles from './page.module.scss';
 
 export const metadata = {
-  description: 'This is my Home Page',
+  description:
+    'Shop here for great additions to your bouldering inventory to take your climbing experience from great to awesome',
 };
 
 export default function HomePage() {
