@@ -11,8 +11,8 @@ export async function generateMetadata(props) {
   const singleProduct = await getProduct(props.params.productId);
 
   return {
-    title: `Single product page for ${singleProduct.name}`,
-    description: '',
+    title: singleProduct.name,
+    description: `Single product page for ${singleProduct.name}`,
   };
 }
 

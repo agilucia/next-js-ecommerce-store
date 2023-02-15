@@ -1,13 +1,18 @@
 'use client';
 
-// import Link from 'next/link';
-import React from 'react';
+import { useRouter } from 'next/navigation';
+import { useState } from 'react';
 
-export class MyForm extends React.Component {
-  render() {
-    // export default function MyForm() {
-    return (
-      <form>
+export default function CheckoutForm(props) {
+  const router = useRouter();
+  const [route, setRoute] = useState();
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    router.push('http://localhost:3000/' + '/thankyou');
+  };
+  return (
+    <main>
+      <form onSubmit={handleSubmit}>
         <label>
           First name:
           <input
@@ -109,22 +114,16 @@ export class MyForm extends React.Component {
             required
           />
         </label>
-        {/* <Link href="/thankyou">
-          <button
-            data-test-id="checkout-confirm-order"
-            type="submit"
-            value="Submit"
-          >
-            Confirm order
-          </button>
-        </Link> */}
-        {/* <Link href="/thankyou"> */}
-        <button data-test-id="checkout-confirm-order" value="Confirm order">
+        <button
+          data-test-id="checkout-confirm-order"
+          value="Confirm order"
+          onClick={() => {
+            setRoute();
+          }}
+        >
           Confirm order
         </button>
-
-        {/* </Link> */}
       </form>
-    );
-  }
+    </main>
+  );
 }
