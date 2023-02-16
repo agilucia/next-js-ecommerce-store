@@ -1,8 +1,6 @@
 // import fs from 'node:fs';
 
 import { cache } from 'react';
-import ProductsPage from '../app/products/page';
-import { productionBrowserSourceMaps } from '../next.config';
 import { sql } from './connect';
 
 // export const products1 = [
@@ -112,9 +110,8 @@ type Product = {
 // get all products
 export const getProducts = cache(async () => {
   const products = await sql<Product[]>`
-  SELECT * FROM products
+    SELECT * FROM products
   `;
-
   return products;
 });
 

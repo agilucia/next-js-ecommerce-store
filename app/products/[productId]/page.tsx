@@ -8,7 +8,13 @@ import Product from './Product';
 
 export const dynamic = 'force-dynamic';
 
-export async function generateMetadata(props) {
+type Props = {
+  params: {
+    productId: string;
+  };
+};
+
+export async function generateMetadata(props: Props) {
   const singleProduct = await getProduct(parseInt(props.params.productId));
 
   if (!singleProduct) {
@@ -21,16 +27,16 @@ export async function generateMetadata(props) {
   };
 }
 
-export default async function ProductPage({ params }) {
+export default async function ProductPage(props: Props) {
   // const singleProduct = products.find((product) => {
   //   return product.id === params.productId;
   // });
 
-  const singleProduct = await getProduct(params.productId);
+  const singleProduct = await getProduct(parseInt(props.params.productId));
 
   // console.log(params);
 
-  console.log(singleProduct);
+  // console.log(singleProduct);
   if (!singleProduct) {
     // throw new Error
     notFound();
@@ -42,7 +48,7 @@ export default async function ProductPage({ params }) {
         <Image
           data-test-id="product-image"
           src={`/images/${singleProduct.id}.jpg`}
-          alt={singleProduct.id}
+          alt={singleProduct.type}
           width="200"
           height="200"
         />
