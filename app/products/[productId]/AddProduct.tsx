@@ -1,10 +1,14 @@
 'use client';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
+import { Product } from '../../../database/products';
 import { getParsedCookie, setStringifiedCookie } from '../../../utils/cookies';
-import styles from './page.module.scss';
 
-export default function Product(props) {
+type Props = {
+  product: Product;
+};
+
+export default function AddProduct(props: Props) {
   const [count, setCount] = useState(1);
   const router = useRouter();
   return (

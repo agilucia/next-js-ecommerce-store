@@ -1,16 +1,17 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-import { useState } from 'react';
+import React, { FormEvent } from 'react';
 import styles from './page.module.scss';
 
-export default function CheckoutForm(props) {
+export default function CheckoutForm() {
   const router = useRouter();
-  const [route, setRoute] = useState();
-  const handleSubmit = (e) => {
-    e.preventDefault();
+
+  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
     router.push('http://localhost:3000/' + '/thankyou');
-  };
+  }
+
   return (
     <main>
       <form
@@ -119,13 +120,7 @@ export default function CheckoutForm(props) {
             required
           />
         </label>
-        <button
-          data-test-id="checkout-confirm-order"
-          value="Confirm order"
-          onClick={() => {
-            setRoute();
-          }}
-        >
+        <button data-test-id="checkout-confirm-order" value="Confirm order">
           Confirm order
         </button>
       </form>

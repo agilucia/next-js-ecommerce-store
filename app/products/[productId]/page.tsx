@@ -2,9 +2,9 @@ import '../../global.scss';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { getProduct } from '../../../database/products';
+import AddProduct from './AddProduct';
 import { ProductNotFoundMetadata } from './not-found';
 import styles from './page.module.scss';
-import Product from './Product';
 
 export const dynamic = 'force-dynamic';
 
@@ -60,7 +60,7 @@ export default async function ProductPage(props: Props) {
             <div data-test-id="product-price">
               Price: {singleProduct.price} €
             </div>
-            <Product product={singleProduct} />
+            <AddProduct product={singleProduct} />
           </div>
         </div>
       </span>

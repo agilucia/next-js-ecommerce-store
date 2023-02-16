@@ -99,7 +99,7 @@ import { sql } from './connect';
 //   },
 // ];
 
-type Product = {
+export type Product = {
   id: number;
   name: string;
   type: string;
