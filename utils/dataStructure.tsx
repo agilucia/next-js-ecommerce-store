@@ -1,8 +1,8 @@
 'use client';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
-import { Product } from '../../../database/products';
-import { getParsedCookie, setStringifiedCookie } from '../../../utils/cookies';
+import { Product } from '../database/products';
+import { getParsedCookie, setStringifiedCookie } from '../utils/cookies';
 
 type Props = {
   product: Product;
@@ -33,7 +33,6 @@ export default function AddProduct(props: Props) {
         +
       </button>
       <button
-        name="Add to cart"
         data-test-id="product-add-to-cart"
         onClick={() => {
           // get cookie

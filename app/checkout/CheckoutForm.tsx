@@ -9,7 +9,7 @@ export default function CheckoutForm() {
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    router.push('http://localhost:3000/' + '/thankyou');
+    router.push('/thankyou');
   }
 
   return (

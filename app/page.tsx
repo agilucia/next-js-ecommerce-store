@@ -16,12 +16,12 @@ export default function HomePage() {
       <h1 className={styles.h1}>BOULDERGEAR FOR EVERYONE</h1>
       {/* </div> */}
       <div className={styles.container}>
-        <Link href="/products">
-          <div className={styles.products_div}>Products</div>
-          <div className={styles.climber_image}>
-            <Image src={climber} alt="climber" />
-          </div>
-        </Link>
+        {/* <Link href="/products"> */}
+        <div className={styles.products_div}>Products</div>
+        <div className={styles.climber_image}>
+          <Image src={climber} alt="climber" />
+        </div>
+        {/* </Link> */}
       </div>
     </div>
   );
