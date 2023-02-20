@@ -3,6 +3,8 @@ import Image from 'next/image';
 import successful from '../../public/images/successful.jpg';
 import styles from './page.module.scss';
 
+export const dynamic = 'force-dynamic';
+
 export const metadata = {
   title: 'Thank you for your order!',
   description:

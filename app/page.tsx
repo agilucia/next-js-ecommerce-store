@@ -4,6 +4,8 @@ import Link from 'next/link';
 import climber from '../public/images/climber.png';
 import styles from './page.module.scss';
 
+export const dynamic = 'force-dynamic';
+
 export const metadata = {
   description:
     'Shop here for great additions to your bouldering inventory to take your climbing experience from great to awesome',
