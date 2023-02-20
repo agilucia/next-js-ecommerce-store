@@ -21,7 +21,7 @@ export default async function ProductsPage() {
       <span className={styles.span}>
         {products.map((product) => {
           return (
-            <div className={styles.div} key={product.id}>
+            <div className={styles.div} key={`product-${product.id}`}>
               <Link
                 href={`/products/${product.id}`}
                 data-test-id="product-<product id>"

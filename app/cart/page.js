@@ -60,7 +60,7 @@ export default async function CartPage() {
         {cartItems.map((product) => (
           <li
             className={styles.li}
-            key={product.id}
+            key={`product-${product.id}`}
             data-test-id={`cart-product-${product.id}`}
           >
             <Link href={`/products/${product.id}`}>

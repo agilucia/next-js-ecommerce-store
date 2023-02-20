@@ -1,4 +1,4 @@
-export const ProductNotFoundMetadata = {
+export const productNotFoundMetadata = {
   title: 'Product Not Found',
   description: "Sorry can't find the product you're looking for",
 };
