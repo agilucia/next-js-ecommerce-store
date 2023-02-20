@@ -6,6 +6,8 @@ import { getProducts } from '../../database/products';
 import DeleteProductButton from './DeleteProductButton';
 import styles from './page.module.scss';
 
+export const dynamic = 'force-dynamic';
+
 export const metadata = {
   title: 'Cart',
   description:

@@ -4,6 +4,8 @@ import { useState } from 'react';
 import { Product } from '../../../database/products';
 import { getParsedCookie, setStringifiedCookie } from '../../../utils/cookies';
 
+export const dynamic = 'force-dynamic';
+
 type Props = {
   product: Product;
 };

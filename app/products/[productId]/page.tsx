@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { getProduct } from '../../../database/products';
 import AddProduct from './AddProduct';
-import { ProductNotFoundMetadata } from './not-found';
+import { productNotFoundMetadata } from './not-found';
 import styles from './page.module.scss';
 
 export const dynamic = 'force-dynamic';
@@ -18,7 +18,7 @@ export async function generateMetadata(props: Props) {
   const singleProduct = await getProduct(parseInt(props.params.productId));
 
   if (!singleProduct) {
-    return ProductNotFoundMetadata;
+    return productNotFoundMetadata;
   }
 
   return {
