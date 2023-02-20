@@ -78,7 +78,11 @@ export default async function CartPage() {
                 </div>
               </div>
             </Link>
-            <DeleteProductButton product={product} />
+            <DeleteProductButton
+              product={product}
+              data-test-id={`cart-product-remove-${product.id}`}
+              name="remove product"
+            />
           </li>
         ))}
       </ul>

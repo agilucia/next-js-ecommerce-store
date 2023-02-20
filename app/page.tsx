@@ -17,10 +17,10 @@ export default function HomePage() {
       {/* </div> */}
       <div className={styles.container}>
         {/* <Link href="/products"> */}
-        <div className={styles.products_div}>Products</div>
-        <div className={styles.climber_image}>
-          <Image src={climber} alt="climber" />
-        </div>
+          <div className={styles.products_div}>Products</div>
+          <div className={styles.climber_image}>
+            <Image src={climber} alt="climber" />
+          </div>
         {/* </Link> */}
       </div>
     </div>

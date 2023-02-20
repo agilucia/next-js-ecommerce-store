@@ -9,7 +9,7 @@ test('Add to cart, change quantity and remove from cart', async ({ page }) => {
   await expect(page).toHaveURL('http://localhost:3000/products');
 
   // choose first product
-  await page.getByTestId('product-1').click();
+  await page.getByRole('link', { name: 'Scarpa' }).click();
   await expect(page).toHaveURL('http://localhost:3000/products/1');
 
   // add some products to the cart
@@ -26,12 +26,10 @@ test('Add to cart, change quantity and remove from cart', async ({ page }) => {
   await expect(page).toHaveURL('http://localhost:3000/products');
 
   // choose second product
-  await expect(page.getByTestId('product-2')).toBeVisible();
-  await page.getByTestId('product-2').click();
+  await page.getByRole('link', { name: 'La Sportiva' }).click();
   await expect(page).toHaveURL('http://localhost:3000/products/2');
 
   // add some products to the cart
-  await expect(page.getByRole('button', { name: 'Add to cart' })).toBeVisible();
   await page
     .getByRole('button', { name: 'Add to cart' })
     .click({ clickCount: 4 });
