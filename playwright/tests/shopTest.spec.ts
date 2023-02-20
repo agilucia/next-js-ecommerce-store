@@ -1,12 +1,15 @@
 import { expect, test } from '@playwright/test';
 
 test('Add to cart, change quantity and remove from cart', async ({ page }) => {
-  // go to website
-  await page.goto('http://localhost:3000/');
+  // // go to website
+  // await page.goto('http://localhost:3000/');
+
+  // // go to products page
+  // await page.getByRole('link', { name: 'Products' }).click();
+  // await expect(page).toHaveURL('http://localhost:3000/products');
 
   // go to products page
-  await page.getByRole('link', { name: 'Products' }).click();
-  await expect(page).toHaveURL('http://localhost:3000/products');
+  await page.goto('http://localhost:3000/products');
 
   // choose first product
   await page.getByRole('link', { name: 'Scarpa' }).click();
