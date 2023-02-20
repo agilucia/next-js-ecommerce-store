@@ -3,7 +3,7 @@
 import { useRouter } from 'next/navigation';
 import { getParsedCookie, setStringifiedCookie } from '../../utils/cookies';
 
-export default function deleteProduct(props) {
+export default function DeleteProduct(props) {
   const router = useRouter();
   return (
     <div>
