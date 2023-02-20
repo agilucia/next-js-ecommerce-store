@@ -112,9 +112,9 @@ Open [http://localhost:3000](http://localhost:3000) in your browser to see the r
 
 1. Sign up on Fly.io: https://fly.io/
 
-2. On the Fly.io Tokens page, generate a new Fly.io access token named <GitHub Actions Deploy Token> and copy it from the text box that appears - it will only be shown once
+2. On the Fly.io Tokens page, generate a new Fly.io access token named `GitHub Actions Deploy Token` and copy it from the text box that appears - it will only be shown once
 
-3. In your GitHub repo under Settings -> Secrets -> Actions, click the <b>New repository secret</b> button at the top right of the page and create a new token with the name <FLY_API_TOKEN> and the token you copied as the secret
+3. In your GitHub repo under Settings -> Secrets -> Actions, click the <b>New repository secret</b> button at the top right of the page and create a new token with the name `FLY_API_TOKEN` and the token you copied as the secret
 
 4. On the command line, open Fly.io login page in your browser using the following command:
 
@@ -122,7 +122,7 @@ Open [http://localhost:3000](http://localhost:3000) in your browser to see the r
 flyctl auth login
 ```
 
-Enter your credentials in the browser window that appears and then click on the link <b>Try Fly.io for free</b>. Switch back to the terminal - it should now show a message like <successfully logged in as <your email>>.
+Enter your credentials in the browser window that appears and then click on the link <b>Try Fly.io for free</b>. Switch back to the terminal - it should now show a message like `successfully logged in as <your email>`.
 
 5. Create an app, specifying the name using only lowercase letters and dashes:
 
@@ -132,9 +132,9 @@ flyctl apps create --name <app name>
 
 6. Create the Fly.io config files as demonstrated in the lecture (also available in the Next.js example repo)
 
-7. Change your <database/connect.ts> as in the lecture: only run <config()> from <dotenv-safe> if the <FLY_IO> environment variable is not set
+7. Change your `database/connect.ts` as in the lecture: only run `config()` from `dotenv-safe` if the `FLY_IO` environment variable is not set
 
-8. Change your <next.config.js> as in the lecture: disable linting and type checking on build, since we do this earlier in the GitHub Actions deploy process
+8. Change your `next.config.js` as in the lecture: disable linting and type checking on build, since we do this earlier in the GitHub Actions deploy process
 
 9. Add database credentials using Fly.io secrets, randomy generating the database name, username and password:
 
@@ -148,7 +148,7 @@ flyctl secrets set PGHOST=localhost PGDATABASE=upleveled$(openssl rand -hex 16) 
 flyctl secrets set <secret name>=<secret value>
 ```
 
-11. The Next.js documentation mentions exposing variables to the browser using variables prefixed with NEXT*PUBLIC*. Instead of using environment variables for this, we recommend declaring a JavaSrcipt variable in your code because this information is not secret - it will be exposed to the browser. If you absolutely need to set a <NEXT_PUBLIC> environment variable, you can add it to your <.env.production> file.
+11. The Next.js documentation mentions exposing variables to the browser using variables prefixed with NEXT*PUBLIC*. Instead of using environment variables for this, we recommend declaring a JavaSrcipt variable in your code because this information is not secret - it will be exposed to the browser. If you absolutely need to set a `NEXT_PUBLIC` environment variable, you can add it to your `.env.production` file.
 
 12. Create a 1GB volume for the PostgreSQL database in the Amsterdam region:
 
@@ -162,7 +162,7 @@ flyctl volumes create postgres --size 1 --region ams
 flyctl deploy
 ```
 
-14. You may receive a <faied to fecth an image or build from source> error during deployment:
+14. You may receive a `faied to fecth an image or build from source` error during deployment:
 
 ```bash
 Error failed to fetch an image or build from source: error building: executor failed running [/bin/sh -c yarn build]: exit code: 1
