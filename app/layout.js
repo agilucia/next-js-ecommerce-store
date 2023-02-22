@@ -61,7 +61,7 @@ export default async function RootLayout({ children }) {
               {/* <div className={styles.div_bouldergear}>bouldergear</div> */}
               <div className={styles.div_links}>
                 <Link href="/">Home</Link>
-                <Link href="/products" data-test-id="products-links">
+                <Link href="/products" data-test-id="products-link">
                   Products
                 </Link>
                 <Link href="/cart" data-test-id="cart-link">
