@@ -148,7 +148,7 @@ export const updateProductById = cache(
     const [product] = await sql<Product[]>`
     UPDATE
       products
-    SELECT
+    SET
       name = ${name},
       type = ${type},
       price = ${price},
